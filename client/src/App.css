@@ -1,0 +1,125 @@
+.App {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  background: rgb(244,9,102);
+  background: linear-gradient(183deg,
+   rgba(244,9,102,1) 50%, 
+   rgba(91,16,159,1) 100%); 
+}
+
+.heading {
+  min-width: 100vw;
+  height: 50px;
+  background: rgb(212,20,96);
+  background: linear-gradient(143deg, rgba(212,20,96,1) 82%, rgba(91,16,159,1) 100%); 
+  box-shadow: 0px 1px 11px 1px black;
+  font-family:'Lobster',serif;
+  display: grid;
+  justify-content: center;
+  align-items: baseline;
+  padding: 0;
+  margin: 0;
+
+}
+
+.heading span {
+  font-size: 2rem;
+  display: inline;
+  padding: 0 2rem 0 2rem;
+  border-bottom: 4px solid white;
+  color: white;
+  /* transition-timing-function: ease-in-out; */
+  animation-timing-function: ease;
+  animation-name: example;
+  animation-duration: 5s;
+  animation-iteration-count:infinite;
+}
+
+@keyframes example {
+0%  {padding: 0 0.9rem;}
+50% {padding: 0 1.9rem; margin-right: 3rem;}
+100% {padding: 0 0.9rem;}
+}
+
+/* .noticeBoard {
+  height: 45%;
+  width: 100%;
+  font-family: 'Lobster', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.noticeBoard span {
+  position: relative;
+  color: white;
+  font-size: 2rem;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+  box-shadow: 0 5px 11px 1px rgb(57, 2, 109);
+  animation-timing-function: ease;
+  animation-name: card;
+  animation-duration: .3s;
+  overflow: hidden;
+}
+
+@keyframes card {
+0%  {display: block; margin-right: 90%;}
+100% {}
+}
+
+.noticeBoard ::after {
+  content: '';
+  position: absolute;
+  top: -70px;
+  opacity: 75%;
+  height: 100px;
+  width: 300px;
+  background-color:  rgb(244, 9, 127);
+  border-bottom: 1px  rgb(168, 7, 71) solid;
+  transform: rotate(-5deg);
+}
+
+.noticeBoard ::before {
+  content: '';
+  position: absolute;
+  top: -54px;
+  
+  height: 100px;
+  width: 300px;
+  background-color:  rgb(214, 7, 111);
+  border-bottom: 1px  rgb(168, 7, 71) solid;
+  transform: rotate(5deg) ;
+} */
+
+.chatRoom {
+  margin-top: 10rem;
+  display: grid;
+  justify-content: center;
+}
+
+.chatRoom * {
+  margin: 5px;
+}
+.chatRoom form {
+  border: 5px solid violet;
+}
+
+.chatRoom form h4 {
+  margin: 2px;
+  font-family: serif;
+  color: white;
+}
+
+.chatRoom input {
+  display: block;
+}
