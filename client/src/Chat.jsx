@@ -28,8 +28,8 @@ export const Chat = ({socket,name,roomId}) => {
     }
 
     // ON  SUBMIT INPUT 
-    const onSubmitInput = async () => {
-        
+    const onSubmitInput = async (e) => {
+        e.preventDefault()
         if(input !== "") {
             const msgData = {
                 roomId:roomId,
@@ -43,6 +43,9 @@ export const Chat = ({socket,name,roomId}) => {
 
             // SEND MSG TO SERVER
             socket.emit('send_msg',msgData)
+
+            // SAVE OWN MSG IN THE SAME STATE THAT RECEIVE MSG FORM OTEHR 
+            setmsgList((list)=>[...list,msgData])
         }
         // CLEAR INPUT FIELD
         setinput('')
@@ -61,16 +64,28 @@ export const Chat = ({socket,name,roomId}) => {
         <span>Live Chat</span>
         
        </div>
+
+       
        {/* Body  */}
        <div className={css.chatBody}>
+
+           <div className={css.msgShow}>
            {msgList.map((e,i)=>{
-               return <span key={i}> {e.msg} </span>
+               return (
+                   <div id={name === e.name ? css.yourMsg:css.othersMsg}>
+                       <p key={i}> {e.msg} </p>
+                   </div>
+               )
            })}
+           </div>
+
+
        </div>
+
 
        {/* Footer */}
        <div className={css.chatFooter}>
-            <form>
+            <div>
 
             {/* === INPUT FOR MSG */}
             <input type='text' placeholder='type...'
@@ -88,7 +103,7 @@ export const Chat = ({socket,name,roomId}) => {
             001.17-1.408l-7-14z" />
             </svg>
 
-            </form>
+            </div>
        </div>
 
    </div>
