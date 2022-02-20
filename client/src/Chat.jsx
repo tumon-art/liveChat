@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
-import { useState } from 'react'
+import { useEffect, useState } from 'react';
 import css from './CSS/Chat.module.css'
+
+
 export const Chat = ({socket,name,roomId}) => {
     // State 
     const [input,setinput] = useState('')
@@ -18,6 +19,8 @@ export const Chat = ({socket,name,roomId}) => {
     // RECEVIE MSG 
     useEffect(()=>{
         socket.on('receive_msg',(data)=>{
+            console.log(data)
+            console.log(msgList)
             setmsgList((list)=>[...list,data])
         })
     },[socket])
@@ -72,8 +75,8 @@ export const Chat = ({socket,name,roomId}) => {
            <div className={css.msgShow}>
            {msgList.map((e,i)=>{
                return (
-                   <div id={name === e.name ? css.yourMsg:css.othersMsg}>
-                       <p key={i}> {e.msg} </p>
+                   <div key={i} id={name === e.name ? css.yourMsg:css.othersMsg}>
+                       <p> {e.msg} </p>
                    </div>
                )
            })}
@@ -85,7 +88,7 @@ export const Chat = ({socket,name,roomId}) => {
 
        {/* Footer */}
        <div className={css.chatFooter}>
-            <div>
+            <div className={css.inputHold}>
 
             {/* === INPUT FOR MSG */}
             <input type='text' placeholder='type...'

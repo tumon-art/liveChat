@@ -3,6 +3,8 @@ const http = require('http');
 const path = require('path')
 const { Server } = require('socket.io')
 const cors = require('cors')
+const fs = require('fs')
+
 
 // USE AND OTHER STUFF
 const app = express()
@@ -10,9 +12,6 @@ app.use(cors())
 const server = http.createServer(app);
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-
-// CHAT DATA
-let chatData = [];
 
 
 // CREATE IO SERVER CONNECTION
@@ -25,7 +24,6 @@ const io = new Server(server, {
 
 // IO ON CONNECTON 
 io.on('connection',(socket)=>{
-    console.log('user connect',socket.id);
 
     // ON JOIN ROOM
     socket.on('join_room',(roomId)=>{
@@ -40,9 +38,7 @@ io.on('connection',(socket)=>{
 
     // SEND MESSAGE 
     socket.on('send_msg',(data)=>{
-        chatData.push(data)
         socket.to(data.roomId).emit('receive_msg', data)
-        console.log(chatData)
     })
 })
 

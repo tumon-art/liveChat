@@ -8,7 +8,7 @@ const socket = io.connect('http://192.168.0.12:5000')
 
 function App() {
   const [name,setname] = useState('')
-  const [roomId,setroomId] = useState('')
+  const [roomId,setroomId] = useState('1')
   const [showChat,setshowChat] = useState(false)
 
   // ON FORM SUBMIT 
